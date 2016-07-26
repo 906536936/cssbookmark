@@ -1,0 +1,86 @@
+<h2>前言 &nbsp; &nbsp; &nbsp;</h2>
+<p>　　CSS权威指南第九章 颜色和背景，一开始看着标题感觉内容和知识自己平时都用过，并没有放在心上，但是就是害怕自己这种只以为是的态度，还是硬着头皮看完这张，多少还是挖了写以前不太了解的知识，太多普通的知识点遍算了。</p>
+<h3>一.前景色</h3>
+<p>什么是前景色？以前只听过背景色，前景色倒是没听过，也"没用过", 其实只是概念问题。前景色就是子文本颜色以及边框的颜色，任何元素都可以设置前景色和背景色。</p>
+<blockquote>
+<p>　　一般来说，前景是元素的文本，不过前景还包括元素周围的边框。</p>
+</blockquote>
+<p>通过color属性就可以设置元素的前景色，元素边框的颜色默认取值为文本颜色，想要设置边框的颜色，自然很容易的想到border-color。</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:css;gutter:true;">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+	&lt;head&gt;
+		&lt;meta charset="UTF-8"&gt;
+		&lt;title&gt;边框颜色默认为文本颜色&lt;/title&gt;
+		&lt;style type="text/css"&gt;
+			p{
+				border-width:1px;
+				border-style:solid;
+				color:blue;
+				width:200px;
+				height:100px;
+			}
+		&lt;/style&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;p&gt;what does the fox say?what does the fox say?&lt;/p&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+<p>效果图：</p>
+<p><img src="http://images2015.cnblogs.com/blog/688158/201601/688158-20160108143359106-709903852.png" alt="" /></p>
+<p>这个例子很简单，贴出来是因为以前我总是觉得边框的颜色默认是黑色，其实不然，只是边框颜色默认取文本的颜色，而文本颜色默认为黑色，所以才会有这样的效果。</p>
+<h3>二.背景色</h3>
+<p>背景色一直以来用的比较多，但是之前都没有注意过背景色的范围。</p>
+<blockquote>
+<p>元素的背景区包括前景之下直到边框外边界的所有空间；　　</p>
+</blockquote>
+<p>这里就是指 内容框及内边距的部分，自然是不包括 外边距部分的。</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:css;gutter:true;">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+	&lt;head&gt;
+		&lt;meta charset="UTF-8"&gt;
+		&lt;title&gt;背景色范围&lt;/title&gt;
+		&lt;style type="text/css"&gt;
+			*{margin:0;padding:0;}
+			p{
+				line-height:60px;
+				width:400px;
+				margin:60px auto;
+			}
+			span{
+				color:blue;
+				font-size:16px;
+				padding:30px;
+				background:red;
+				border:1px solid red;
+			}
+		&lt;/style&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;p&gt;
+			&lt;span&gt;what does the fox say? &lt;/span&gt;
+		&lt;/p&gt;
+		&lt;script type="text/javascript" src="../jquery1.10.2.min.js"&gt;&lt;/script&gt;
+		&lt;script type="text/javascript"&gt;
+			console.log($("span").height()); //16
+		&lt;/script&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+<p><img src="http://images2015.cnblogs.com/blog/688158/201601/688158-20160108152701590-379500658.png" alt="" />　　</p>
+<p>我只给span元素设置了字体16px，通过js获得其height值为16px，由于背景色会延伸到内边距，所以看起来红色区域的高度要远远大于16px。</p>
+<h3>三.background-position</h3>
+<p>在项目中用到雪碧图的时候，background-position的使用必不可少，这个属性看似熟悉的很，但是还是有几点需要记住：</p>
+<p>1.当background-position使用top left right bottom等关键字表示时，位置关键字可以按任意顺序出现，只要保证不能操作2个关键字，一个对应x，一个对应y.</p>
+<p>　比如：background-position：top left；和background-position：left top完全等价；因为在水平方向下，只有left和right才能起作用，在垂直方向上，只有top和bottom有效</p>
+<p><img src="http://images2015.cnblogs.com/blog/688158/201601/688158-20160108154635856-2122835466.png" alt="" /><img src="http://images2015.cnblogs.com/blog/688158/201601/688158-20160108154644668-1919096948.png" alt="" /></p>
+<p>2.当background-position使用百分比及数值表示时，水平值总是先出现</p>
+<p>3.background-position-x/y在火狐和opera 是无效的，只能通过设置 background-position 来改变图片背景的位置。</p>
+<h3>四. 小结</h3>
+<p>最近还在坚持看CSS方面的书，感觉CSS学起来比js要困难一些，毕竟要比js抽象些，光是一堆的概念，内容框，行款,行内框就能整半天，但是坚持看书还是能有不小的收获的。</p>
+<p>做前端开发刚好一年半，在调元素的样式的时候如果还是靠&rdquo;试&ldquo;来完成，的确是low了些。不管怎样，CSS知识方面还是任重道远</p>
+<p>&nbsp;</p>
